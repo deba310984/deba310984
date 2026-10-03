@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-labelledby="t d" font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif">
+  <title id="t">AWS Two-Tier Reference Architecture</title>
+  <desc id="d">Highly available multi-AZ AWS architecture. Internet traffic enters through an Internet Gateway to an Application Load Balancer in public subnets, routes to an Auto Scaling group of EC2 instances in private application subnets across two Availability Zones, which connect to an encrypted RDS MySQL database in private data subnets. A NAT Gateway provides outbound access, operators connect via SSM Session Manager, and CloudWatch collects metrics and logs. Provisioned with Terraform.</desc>
+  <defs>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#38BDF8"/></marker>
+    <marker id="ap" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#A78BFA"/></marker>
+  </defs>
+  <rect x="1" y="1" width="998" height="618" rx="16" fill="#0B0F17" stroke="#223047" stroke-width="1.5"/>
+
+  <text x="28" y="38" fill="#E6EDF3" font-size="18" font-weight="700">AWS Two-Tier Reference Architecture</text>
+  <text x="28" y="58" fill="#64748B" font-size="12.5" font-family="ui-monospace, Menlo, monospace">multi-AZ · load-balanced app tier · private encrypted data tier · provisioned with Terraform</text>
+
+  <!-- Internet & users -->
+  <g font-family="ui-monospace, Menlo, monospace">
+    <rect x="420" y="74" width="160" height="40" rx="10" fill="#101826" stroke="#2A3B52"/>
+    <text x="500" y="99" text-anchor="middle" fill="#9FB3C8" font-size="13">🌐  Internet / Users</text>
+  </g>
+  <line x1="500" y1="114" x2="500" y2="150" stroke="#38BDF8" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- IGW -->
+  <rect x="432" y="150" width="136" height="34" rx="8" fill="#0F1A28" stroke="#38BDF8"/>
+  <text x="500" y="172" text-anchor="middle" fill="#6EE7FF" font-size="12.5" font-family="ui-monospace, Menlo, monospace">Internet Gateway</text>
+  <line x1="500" y1="184" x2="500" y2="210" stroke="#38BDF8" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- VPC container -->
+  <rect x="40" y="206" width="920" height="358" rx="14" fill="#0C1420" stroke="#2A3B52" stroke-dasharray="2 0"/>
+  <text x="58" y="230" fill="#38BDF8" font-size="13" font-weight="700" letter-spacing="1" font-family="ui-monospace, Menlo, monospace">AWS VPC</text>
+
+  <!-- ALB spanning -->
+  <rect x="330" y="244" width="340" height="40" rx="9" fill="#13233A" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="500" y="269" text-anchor="middle" fill="#CDE8FF" font-size="13.5" font-weight="600">Application Load Balancer</text>
+
+  <!-- AZ columns -->
+  <!-- AZ A -->
+  <rect x="62" y="300" width="420" height="246" rx="12" fill="#0A1119" stroke="#1E2A3A"/>
+  <text x="80" y="322" fill="#8B949E" font-size="12" font-family="ui-monospace, Menlo, monospace">Availability Zone A</text>
+  <!-- AZ B -->
+  <rect x="518" y="300" width="420" height="246" rx="12" fill="#0A1119" stroke="#1E2A3A"/>
+  <text x="536" y="322" fill="#8B949E" font-size="12" font-family="ui-monospace, Menlo, monospace">Availability Zone B</text>
+
+  <!-- subnet rows labels (center spanning tags) -->
+  <g font-family="ui-monospace, Menlo, monospace" font-size="10.5">
+    <rect x="80" y="332" width="120" height="20" rx="10" fill="#101A28" stroke="#2A3B52"/><text x="140" y="346" text-anchor="middle" fill="#7DD3FC">public subnet</text>
+    <rect x="536" y="332" width="120" height="20" rx="10" fill="#101A28" stroke="#2A3B52"/><text x="596" y="346" text-anchor="middle" fill="#7DD3FC">public subnet</text>
+  </g>
+
+  <!-- Public tier: NAT (AZ A) -->
+  <rect x="80" y="358" width="170" height="40" rx="8" fill="#101826" stroke="#5B9BD5"/>
+  <text x="165" y="383" text-anchor="middle" fill="#BBD6F2" font-size="12.5" font-family="ui-monospace, Menlo, monospace">NAT Gateway</text>
+
+  <!-- app subnet tags -->
+  <g font-family="ui-monospace, Menlo, monospace" font-size="10.5">
+    <rect x="80" y="410" width="150" height="20" rx="10" fill="#101A28" stroke="#2A3B52"/><text x="155" y="424" text-anchor="middle" fill="#A7F3D0">private app subnet</text>
+    <rect x="536" y="410" width="150" height="20" rx="10" fill="#101A28" stroke="#2A3B52"/><text x="611" y="424" text-anchor="middle" fill="#A7F3D0">private app subnet</text>
+  </g>
+
+  <!-- EC2 ASG nodes -->
+  <rect x="80" y="436" width="180" height="42" rx="8" fill="#13233A" stroke="#38BDF8"/>
+  <text x="170" y="462" text-anchor="middle" fill="#CDE8FF" font-size="12.5">EC2 · Auto Scaling</text>
+  <rect x="536" y="436" width="180" height="42" rx="8" fill="#13233A" stroke="#38BDF8"/>
+  <text x="626" y="462" text-anchor="middle" fill="#CDE8FF" font-size="12.5">EC2 · Auto Scaling</text>
+
+  <!-- db subnet tags -->
+  <g font-family="ui-monospace, Menlo, monospace" font-size="10.5">
+    <rect x="300" y="492" width="160" height="20" rx="10" fill="#101A28" stroke="#2A3B52"/><text x="380" y="506" text-anchor="middle" fill="#C4B5FD">private data subnet</text>
+  </g>
+
+  <!-- RDS spanning (primary + standby concept) -->
+  <rect x="330" y="500" width="340" height="40" rx="9" fill="#1A1430" stroke="#A78BFA" stroke-width="1.5"/>
+  <text x="500" y="525" text-anchor="middle" fill="#DDD3FF" font-size="13">RDS MySQL · encrypted (Multi-AZ)</text>
+
+  <!-- connectors -->
+  <!-- ALB to EC2 -->
+  <line x1="420" y1="284" x2="200" y2="436" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#a)"/>
+  <line x1="580" y1="284" x2="600" y2="436" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#a)"/>
+  <!-- EC2 to RDS -->
+  <line x1="190" y1="478" x2="360" y2="500" stroke="#A78BFA" stroke-width="1.8" marker-end="url(#ap)"/>
+  <line x1="620" y1="478" x2="640" y2="500" stroke="#A78BFA" stroke-width="1.8" marker-end="url(#ap)"/>
+  <!-- EC2 to NAT (outbound) -->
+  <path d="M170,436 L165,398" fill="none" stroke="#3C5068" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#a)"/>
+  <text x="196" y="418" fill="#5B6B7E" font-size="10" font-family="ui-monospace, Menlo, monospace">outbound</text>
+
+  <!-- side panel: IAM/SSM + CloudWatch -->
+  <g font-family="ui-monospace, Menlo, monospace" font-size="11.5">
+    <rect x="744" y="356" width="196" height="54" rx="10" fill="#101826" stroke="#2A3B52"/>
+    <text x="842" y="380" text-anchor="middle" fill="#9FB3C8" font-size="12">👤 Operator → SSM</text>
+    <text x="842" y="398" text-anchor="middle" fill="#5B6B7E">Session Manager (no SSH)</text>
+
+    <rect x="744" y="436" width="196" height="54" rx="10" fill="#101826" stroke="#2A3B52"/>
+    <text x="842" y="460" text-anchor="middle" fill="#9FB3C8" font-size="12">📈 CloudWatch</text>
+    <text x="842" y="478" text-anchor="middle" fill="#5B6B7E">metrics · logs · alarms</text>
+  </g>
+  <path d="M744,383 L720,457" fill="none" stroke="#2A3B52" stroke-width="1.2" stroke-dasharray="3 3"/>
+
+  <!-- footer note -->
+  <text x="500" y="590" text-anchor="middle" fill="#64748B" font-size="12">Reference architecture from my AWS / Terraform work — least-privilege security groups, encryption at rest, SSM access.</text>
+</svg>

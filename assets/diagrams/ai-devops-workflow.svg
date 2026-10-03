@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" role="img" aria-labelledby="t d" font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif">
+  <title id="t">AI-Assisted DevOps Workflow</title>
+  <desc id="d">Workflow: a developer uses AI-assisted analysis to help produce code, Terraform and Kubernetes changes; these pass through automated tests and security checks; then a mandatory human review gate for high-impact changes; only after approval does deployment proceed, followed by monitoring that feeds back to the developer.</desc>
+  <defs>
+    <marker id="f" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#38BDF8"/></marker>
+    <marker id="fb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#3C5068"/></marker>
+  </defs>
+  <rect x="1" y="1" width="998" height="298" rx="16" fill="#0B0F17" stroke="#223047" stroke-width="1.5"/>
+  <text x="28" y="38" fill="#E6EDF3" font-size="18" font-weight="700">AI-Assisted DevOps Workflow</text>
+  <text x="28" y="58" fill="#64748B" font-size="12.5" font-family="ui-monospace, Menlo, monospace">AI accelerates · humans approve high-impact infrastructure changes</text>
+
+  <!-- node helper layout: two rows -->
+  <g font-size="12" font-family="ui-monospace, Menlo, monospace" text-anchor="middle">
+    <!-- row 1 -->
+    <rect x="40" y="92" width="150" height="48" rx="10" fill="#101826" stroke="#2A3B52"/><text x="115" y="121" fill="#D7E2EE">Developer</text>
+    <rect x="230" y="92" width="170" height="48" rx="10" fill="#13233A" stroke="#38BDF8"/><text x="315" y="115" fill="#CDE8FF">AI-assisted</text><text x="315" y="131" fill="#7DD3FC" font-size="11">analysis · assist</text>
+    <rect x="440" y="92" width="180" height="48" rx="10" fill="#101826" stroke="#2A3B52"/><text x="530" y="115" fill="#D7E2EE">Code / Terraform</text><text x="530" y="131" fill="#9FB3C8" font-size="11">/ Kubernetes</text>
+    <rect x="660" y="92" width="150" height="48" rx="10" fill="#101826" stroke="#2A3B52"/><text x="735" y="121" fill="#D7E2EE">Tests</text>
+    <rect x="850" y="92" width="120" height="48" rx="10" fill="#101826" stroke="#A78BFA"/><text x="910" y="115" fill="#DDD3FF">Security</text><text x="910" y="131" fill="#C4B5FD" font-size="11">scans</text>
+
+    <line x1="190" y1="116" x2="228" y2="116" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#f)"/>
+    <line x1="400" y1="116" x2="438" y2="116" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#f)"/>
+    <line x1="620" y1="116" x2="658" y2="116" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#f)"/>
+    <line x1="810" y1="116" x2="848" y2="116" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#f)"/>
+
+    <!-- down connector -->
+    <path d="M910,140 L910,172 L735,172 L735,196" fill="none" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#f)"/>
+
+    <!-- row 2 -->
+    <rect x="610" y="198" width="250" height="52" rx="10" fill="#1A1430" stroke="#A78BFA" stroke-width="2"/>
+    <text x="735" y="221" fill="#DDD3FF" font-weight="700">🧑‍⚖️ Human Review</text>
+    <text x="735" y="239" fill="#C4B5FD" font-size="11">required for high-impact changes</text>
+
+    <rect x="400" y="200" width="160" height="48" rx="10" fill="#101826" stroke="#2A3B52"/><text x="480" y="229" fill="#D7E2EE">Deployment</text>
+    <rect x="190" y="200" width="160" height="48" rx="10" fill="#101826" stroke="#2A3B52"/><text x="270" y="223" fill="#D7E2EE">Monitoring</text><text x="270" y="239" fill="#9FB3C8" font-size="11">metrics · alerts</text>
+
+    <line x1="610" y1="224" x2="562" y2="224" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#f)"/>
+    <line x1="400" y1="224" x2="352" y2="224" stroke="#38BDF8" stroke-width="1.8" marker-end="url(#f)"/>
+
+    <!-- feedback to developer -->
+    <path d="M190,224 L115,224 L115,142" fill="none" stroke="#3C5068" stroke-width="1.6" stroke-dasharray="5 5" marker-end="url(#fb)"/>
+  </g>
+  <text x="140" y="188" fill="#5B6B7E" font-size="10.5" font-family="ui-monospace, Menlo, monospace">feedback</text>
+</svg>
